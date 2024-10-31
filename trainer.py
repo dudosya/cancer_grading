@@ -18,6 +18,8 @@ class Trainer:
         total_loss = 0
         correct = 0
         total = 0
+        all_labels = []
+        all_predicted = []
         
         for images,labels in tqdm(self.train_loader, desc="Training", leave=False):
             images = images.to(self.device).float()
@@ -33,12 +35,17 @@ class Trainer:
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
+            all_labels.append(labels)
+            all_predicted.append(predicted)
             
         avg_loss = total_loss / total
         accuracy = correct / total
         
-        labels_np = labels.cpu().numpy()
-        predicted_np = predicted.cpu().numpy()
+        all_labels_tensor = torch.cat(all_labels, dim=0)
+        all_predicted_tensor = torch.cat(all_predicted, dim=0)
+        
+        labels_np = all_labels_tensor.cpu().numpy()
+        predicted_np = all_predicted_tensor.cpu().numpy()
         epoch_f1 = f1_score(y_true=labels_np, y_pred=predicted_np, average='weighted', zero_division=0)
         epoch_precision = precision_score(y_true=labels_np, y_pred=predicted_np, average='weighted', zero_division=0)
         epoch_recall = recall_score(y_true=labels_np, y_pred=predicted_np, average='weighted', zero_division=0)
@@ -52,6 +59,8 @@ class Trainer:
         total_loss = 0
         correct = 0
         total = 0
+        all_labels = []
+        all_predicted = []
         
         with torch.no_grad():
             for images, labels in tqdm(self.test_loader, desc="Evaluating", leave=False):
@@ -65,11 +74,17 @@ class Trainer:
                 _, predicted = torch.max(outputs.data, 1)
                 total += labels.size(0)
                 correct += (predicted == labels).sum().item()
-                
+                all_labels.append(labels)
+                all_predicted.append(predicted)
+            
+            
+            all_labels_tensor = torch.cat(all_labels, dim=0)
+            all_predicted_tensor = torch.cat(all_predicted, dim=0)
+            
             avg_loss = total_loss / total
             accuracy = correct/total
-            labels_np = labels.cpu().numpy()
-            predicted_np = predicted.cpu().numpy()
+            labels_np = all_labels_tensor.cpu().numpy()
+            predicted_np = all_predicted_tensor.cpu().numpy()
             epoch_f1 = f1_score(y_true=labels_np, y_pred=predicted_np, average='weighted', zero_division=0)
             epoch_precision = precision_score(y_true=labels_np, y_pred=predicted_np, average='weighted', zero_division=0)
             epoch_recall = recall_score(y_true=labels_np, y_pred=predicted_np, average='weighted', zero_division=0)
@@ -92,7 +107,7 @@ class Trainer:
             print(f"Train Precision: {train_precision:.4f}")
             print(f"Train Recall: {train_recall:.4f}")
             
-            print("TEST METRICS")
+            print("\nTEST METRICS")
             print(f"Test Loss: {test_loss:.4f}")
             print(f"Test Accuracy: {test_acc:.4f}")
             print(f"Test F1: {test_f1:.4f}")
