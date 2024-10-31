@@ -5,7 +5,7 @@ import torchvision.models as models
 from torchvision.models import EfficientNet_B0_Weights
 
 class CaFeNet(nn.Module):
-    def __init__(self,num_classes):
+    def __init__(self,num_classes, lr = 0.001):
         super().__init__()
         self.feature_extractor = models.efficientnet_b0(weights=EfficientNet_B0_Weights.DEFAULT)
         self.feature_extractor.classifier = nn.Identity() #identity: input shape = output shape
@@ -14,12 +14,19 @@ class CaFeNet(nn.Module):
         self.attention_dim = self.feature_dim
         self.attn = CentroidAttention(num_classes,self.feature_dim,self.attention_dim)
         self.classifier = nn.Linear(self.feature_dim*2,num_classes)
+        self.criterion = torch.nn.CrossEntropyLoss()
+        self.optimizer = torch.optim.Adam(self.parameters(), lr=lr)
         
     def forward(self, x, labels = None):
         features = self.feature_extractor(x)
         features = self.attn(features,labels)
         logits = self.classifier(features)
         return logits, features
+    
+    def print_num_params(self):
+        total_params = sum(p.numel() for p in self.parameters() if p.requires_grad)
+        total_params_millions = total_params / 1e6
+        print(f"Total trainable params: {total_params_millions:.3g} M")
         
         
 class CentroidAttention(nn.Module):
