@@ -4,6 +4,8 @@ from sklearn.metrics import f1_score,precision_score, recall_score, confusion_ma
 from collections import Counter
 import numpy as np
 import wandb
+import config as CONFIGURE
+
 
 class Trainer:
     def __init__(self,model,train_loader, test_loader, criterion, optimizer, device):
@@ -101,23 +103,21 @@ class Trainer:
             train_loss, train_acc, train_f1, train_precision, train_recall = self.train_epoch()
             test_loss, test_acc, test_f1, test_precision, test_recall = self.evaluate_epoch()
             
-            wandb.log({
-                "train_loss": train_loss,
-                "train_acc": train_acc,
-                "train_f1": train_f1,
-                "train_precision": train_precision,
-                "train_recall": train_recall,
-                "epoch": epoch
-            })
-            
-            wandb.log({
-                "test_loss": test_loss,
-                "test_acc": test_acc,
-                "test_f1": test_f1,
-                "test_precision": test_precision,
-                "test_recall": test_recall,
-                "epoch": epoch
-            })
+            if CONFIGURE.wandb is True:
+                wandb.log({
+                    "train_loss": train_loss,
+                    "train_acc": train_acc,
+                    "train_f1": train_f1,
+                    "train_precision": train_precision,
+                    "train_recall": train_recall,
+                    "test_loss": test_loss,
+                    "test_acc": test_acc,
+                    "test_f1": test_f1,
+                    "test_precision": test_precision,
+                    "test_recall": test_recall,
+                    "epoch": epoch
+                })
+        
             
             print("TRAINING METRICS")
             print(f"Train Loss: {train_loss:.4f}")

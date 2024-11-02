@@ -35,9 +35,10 @@ def main():
     if CONFIGURE.wandb == True:
         wandb.init(
             project = CONFIGURE.wandb_project_name,
-            name = CONFIGURE.wandb_run_name,
+            #name = CONFIGURE.wandb_run_name,
             tags = CONFIGURE.wandb_tags,
             monitor_gym = CONFIGURE.wandb_monitor_gym,
+            id = CONFIGURE.wandb_run_id,
             resume = CONFIGURE.wandb_resume_run
         )
         print("wandb is ON")
