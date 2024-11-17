@@ -1,7 +1,7 @@
 import sklearn.model_selection
 import torch.utils
 import torch.utils.data
-from models import cafenet
+from models import cafenet, alexnet, vgg16, googlenet, resnet34, vit, swin_tiny
 import dataset
 import trainer
 import config as CONFIGURE
@@ -35,11 +35,11 @@ def main():
     if CONFIGURE.wandb == True:
         wandb.init(
             project = CONFIGURE.wandb_project_name,
-            #name = CONFIGURE.wandb_run_name,
+            name = CONFIGURE.wandb_run_name,
             tags = CONFIGURE.wandb_tags,
             monitor_gym = CONFIGURE.wandb_monitor_gym,
-            id = CONFIGURE.wandb_run_id,
-            resume = CONFIGURE.wandb_resume_run
+            #id = CONFIGURE.wandb_run_id,
+            #resume = CONFIGURE.wandb_resume_run
         )
         print("wandb is ON")
         
@@ -54,7 +54,14 @@ def main():
     train_indices, test_indices = sklearn.model_selection.train_test_split(indices)
     train_dataset = torch.utils.data.Subset(train_set, train_indices)
     test_dataset = torch.utils.data.Subset(test_set,test_indices)
+    
     myModel = cafenet.CaFeNet(num_classes=CONFIGURE.num_classes, lr=CONFIGURE.learning_rate).to(device=device)
+    #myModel = alexnet.AlexNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = vgg16.VGG16(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = googlenet.GoogLeNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = resnet34.ResNet34(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = vit.VisionTransformer(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = swin_tiny.SwinTiny(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     
     train_loader = torch.utils.data.DataLoader(train_dataset,batch_size=CONFIGURE.batch_size,shuffle=True)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIGURE.batch_size, shuffle=False)
