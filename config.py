@@ -24,12 +24,12 @@ test_transforms = transforms.Compose([
 learning_rate = 0.001
 num_classes = 4
 batch_size = 16
-num_epochs = 20
+num_epochs = 2
 
-wandb = True
-wandb_project_name = "cancer_grading_ml_project"
-wandb_run_name = "ViT-Base"
-wandb_tags = ["ml_course"]
+wandb = False
+wandb_project_name = "cancer_grading_tester1"
+wandb_run_name = "test"
+wandb_tags = ["test"]
 wandb_monitor_gym = True
 #wandb_run_id = "xvio3t2p"
 #wandb_resume_run = "allow" # "never" if dont wanna
