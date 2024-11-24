@@ -27,8 +27,8 @@ batch_size = 16
 num_epochs = 20
 
 wandb = True
-wandb_project_name = "cancer_grading_ml_course"
-wandb_run_name = "CaFeNet"
+wandb_project_name = "cancer_grading_ml_project"
+wandb_run_name = "ViT-Base"
 wandb_tags = ["ml_course"]
 wandb_monitor_gym = True
 #wandb_run_id = "xvio3t2p"

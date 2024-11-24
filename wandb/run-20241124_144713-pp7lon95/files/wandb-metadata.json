@@ -1,0 +1,43 @@
+{
+  "os": "Windows-10-10.0.19045-SP0",
+  "python": "3.11.10",
+  "startedAt": "2024-11-24T09:47:13.433446Z",
+  "program": "C:\\Users\\aezak\\Desktop\\swe\\cancer_grading\\main.py",
+  "codePath": "main.py",
+  "git": {
+    "remote": "https://github.com/dudosya/cancer_grading",
+    "commit": "855e240a3df56dacf96b0de30742445afb6469c8"
+  },
+  "email": "dosbol.erlan@nu.edu.kz",
+  "root": "C:\\Users\\aezak\\Desktop\\swe\\cancer_grading",
+  "host": "DESKTOP-1E62N7N",
+  "username": "aezak",
+  "executable": "C:\\Users\\aezak\\miniconda3\\envs\\cancer_grading_env\\python.exe",
+  "codePathLocal": "main.py",
+  "cpu_count": 6,
+  "cpu_count_logical": 12,
+  "gpu": "NVIDIA GeForce RTX 3050 Laptop GPU",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "511464960000",
+      "used": "460300771328"
+    }
+  },
+  "memory": {
+    "total": "14877265920"
+  },
+  "cpu": {
+    "count": 6,
+    "countLogical": 12
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 3050 Laptop GPU",
+      "memoryTotal": "4294967296",
+      "cudaCores": 2048,
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.6"
+}
