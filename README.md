@@ -1,4 +1,3 @@
-```markdown
 # Cancer Grading Project
 
 This repository provides the code and instructions for reproducing the results from the cancer grading project using various deep learning models.
