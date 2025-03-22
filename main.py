@@ -1,7 +1,8 @@
 import sklearn.model_selection
+from models import CaFeNet
 import torch.utils
 import torch.utils.data
-from models import cafenet, alexnet, vgg16, googlenet, resnet34, vit, swin_tiny
+from models import alexnet, vgg16, googlenet, resnet34, vit, swin_tiny, cvt, dinat
 import dataset
 import trainer
 import config as CONFIGURE
@@ -60,8 +61,10 @@ def main():
     #myModel = vgg16.VGG16(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = googlenet.GoogLeNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = resnet34.ResNet34(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
-    myModel = vit.VisionTransformer(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = vit.VisionTransformer(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = swin_tiny.SwinTiny(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = cvt.CvTModelHF(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    myModel = dinat.DiNATModelHF(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     
     train_loader = torch.utils.data.DataLoader(train_dataset,batch_size=CONFIGURE.batch_size,shuffle=True)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIGURE.batch_size, shuffle=False)
