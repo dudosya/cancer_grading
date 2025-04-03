@@ -12,6 +12,8 @@ wandb/
 
 notebooks/
 
+wandb/
+
 
 # Distribution / packaging
 .Python

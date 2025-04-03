@@ -26,7 +26,7 @@ test_transforms = transforms.Compose([
 learning_rate = 0.001
 num_classes = 4
 batch_size = 16
-num_epochs = 20
+num_epochs = 2
 
 wandb = True
 wandb_project_name = "22_March"
