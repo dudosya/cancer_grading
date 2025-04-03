@@ -62,11 +62,11 @@ def main():
     #myModel = cafenet.CaFeNet(num_classes=CONFIGURE.num_classes, lr=CONFIGURE.learning_rate).to(device=device)
     #myModel = alexnet.AlexNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = vgg16.VGG16(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
-    #myModel = googlenet.GoogLeNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    myModel = googlenet.GoogLeNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = resnet34.ResNet34(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = vit.VisionTransformer(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = swin_tiny.SwinTiny(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
-    myModel = cvt.CvTModelHF(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = cvt.CvTModelHF(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     
     train_loader = torch.utils.data.DataLoader(train_dataset,batch_size=CONFIGURE.batch_size,shuffle=True)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIGURE.batch_size, shuffle=False)

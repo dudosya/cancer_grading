@@ -4,7 +4,7 @@ import torch
 
 #CONFIG
 seed_num = 7
-folder_path = "./data"
+folder_path = "/dataset/KBSMC_colon_tma_cancer_grading_512"
 
 
 
@@ -25,12 +25,12 @@ test_transforms = transforms.Compose([
 
 learning_rate = 0.001
 num_classes = 4
-batch_size = 16
-num_epochs = 2
+batch_size = 64
+num_epochs = 20
 
 wandb = True
-wandb_project_name = "22_March"
-wandb_run_name = "CvT"
+wandb_project_name = "3 April"
+wandb_run_name = "GoogLeNet"
 wandb_tags = ["normal_dataset"]
 wandb_monitor_gym = True
 #wandb_run_id = "xvio3t2p"
