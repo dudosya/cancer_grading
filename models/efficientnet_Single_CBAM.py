@@ -4,7 +4,7 @@ import torch.optim as optim
 from torchvision import models
 from attention_modules.CBAM import CBAM # Assuming original CBAM.py
 
-class EfficientNetB1(nn.Module):
+class EfficientNetB1_single_CBAM(nn.Module):
     def __init__(self, num_classes=4, lr=0.001, reduction_ratio=16, spatial_kernel_size=7):
         super().__init__()
         self.base_model = models.efficientnet_b1(weights=models.EfficientNet_B1_Weights.IMAGENET1K_V1)
@@ -76,7 +76,7 @@ if __name__ == '__main__':
     INPUT_SIZE = (240, 240) # EfficientNet-B1 default input size
 
     # Create the model instance
-    model = EfficientNetB1(num_classes=NUM_CLASSES, lr=LEARNING_RATE)
+    model = EfficientNetB1_single_CBAM(num_classes=NUM_CLASSES, lr=LEARNING_RATE)
 
     # Print the number of trainable parameters
     model.print_num_params() # Output will be around 6.6M for B1 with a replaced classifier
