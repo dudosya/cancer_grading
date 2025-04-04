@@ -31,6 +31,7 @@ class Trainer:
             outputs, features = self.model(images, labels)
             loss = self.criterion(outputs, labels)
             loss.backward()
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), max_norm=1.0) # Clip gradients
             self.optimizer.step()
 
             total_loss += loss.item() * labels.size(0)

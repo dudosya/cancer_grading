@@ -1,19 +1,20 @@
-import sklearn.model_selection
-from models import CaFeNet
-import torch.utils
-import torch.utils.data
-from models import alexnet, vgg16, googlenet, resnet34, vit, swin_tiny, cvt
+# import files
+from models import *
 import dataset
 import trainer
 import config as CONFIGURE
 import wandb
 
+#import libs
 import torch
 import torchvision
 from torchvision import transforms
 import numpy as np
 import sklearn
 import random
+import sklearn.model_selection
+import torch.utils
+import torch.utils.data
 
 def set_seed(seed=CONFIGURE.seed_num):
     random.seed(seed)
@@ -59,14 +60,14 @@ def main():
     
     #this could have been done better tbh
     
-    #myModel = cafenet.CaFeNet(num_classes=CONFIGURE.num_classes, lr=CONFIGURE.learning_rate).to(device=device)
     #myModel = alexnet.AlexNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = vgg16.VGG16(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
-    myModel = googlenet.GoogLeNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = googlenet.GoogLeNet(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = resnet34.ResNet34(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = vit.VisionTransformer(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     #myModel = swin_tiny.SwinTiny(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
-    #myModel = cvt.CvTModelHF(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    #myModel = CvTModelHF(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    myModel = EfficientNetB1(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     
     train_loader = torch.utils.data.DataLoader(train_dataset,batch_size=CONFIGURE.batch_size,shuffle=True)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIGURE.batch_size, shuffle=False)
