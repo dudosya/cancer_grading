@@ -57,7 +57,7 @@ def main():
     train_dataset = torch.utils.data.Subset(train_set, train_indices)
     test_dataset = torch.utils.data.Subset(test_set,test_indices)
 
-    myModel = GoogLeNetCustom_CBAM3(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
+    myModel = GoogLeNetCustom_CBAM4(num_classes=CONFIGURE.num_classes, lr = CONFIGURE.learning_rate).to(device=device)
     
     train_loader = torch.utils.data.DataLoader(train_dataset,batch_size=CONFIGURE.batch_size,shuffle=True)
     test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=CONFIGURE.batch_size, shuffle=False)

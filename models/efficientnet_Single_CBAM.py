@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import models
-from attention_modules.CBAM import CBAM # Assuming original CBAM.py
+from .attention_modules import * 
 
 class EfficientNetB1_single_CBAM(nn.Module):
     def __init__(self, num_classes=4, lr=0.001, reduction_ratio=16, spatial_kernel_size=7):
