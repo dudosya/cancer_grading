@@ -1,1 +1,1 @@
-from .CBAM_2_ChannelActivation import *
+from .CBAM_4_NoChannelBottleneck import *
