@@ -29,8 +29,8 @@ batch_size = 256
 num_epochs = 20
 
 wandb = True
-wandb_project_name = "14 April 2025"
-wandb_run_name = "GoogLeNet CBAM 4"
+wandb_project_name = "15 April 2025"
+wandb_run_name = "GoogLeNet_CBAM_1_SpatialKernel"
 wandb_tags = ["normal_dataset"]
 wandb_monitor_gym = True
 #wandb_run_id = "xvio3t2p"
