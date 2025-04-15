@@ -1,1 +1,1 @@
-from .CBAM_1_SpatialKernel import *
+from .CBAM_2_ChannelActivation import *
