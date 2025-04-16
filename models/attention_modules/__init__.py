@@ -1,1 +1,1 @@
-from .CBAM_5_Parallel import *
+from .CBAM_6_Residual import *
