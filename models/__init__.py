@@ -1,5 +1,5 @@
-from .vgg16_custom import VGG16Custom
-from .vgg16_CBAM_1 import VGG16Custom_CBAM1_Parallel
+from .resnet34_custom import ResNet34Custom
+from .resnet34_CBAM_1 import ResNet34Custom_CBAM1
 
 
-__all__ = ["VGG16Custom", "VGG16Custom_CBAM1_Parallel"]
+__all__ = ["ResNet34Custom", "ResNet34Custom_CBAM1"]
