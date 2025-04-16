@@ -30,7 +30,7 @@ num_epochs = 20
 
 wandb = True
 wandb_project_name = "16 April 2025"
-wandb_run_name = "ResNet34"
+wandb_run_name = "AlexNet_CBAM_3_Default"
 wandb_tags = ["normal_dataset"]
 wandb_monitor_gym = True
 #wandb_run_id = "xvio3t2p"

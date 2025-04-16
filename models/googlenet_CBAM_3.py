@@ -12,7 +12,7 @@ import torch.optim as optim
 from torch import Tensor
 from torch.hub import load_state_dict_from_url
 
-from .attention_modules import *
+from .attention_modules import CBAM 
 
 
 # --- GoogLeNet Base Building Blocks ---
