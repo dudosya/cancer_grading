@@ -1,4 +1,5 @@
-from .alexnet_CBAM_1 import AlexNetCustom_CBAM1
+from .vgg16_custom import VGG16Custom
+from .vgg16_CBAM_1 import VGG16Custom_CBAM1_Parallel
 
 
-__all__ = ["AlexNetCustom_CBAM1"]
+__all__ = ["VGG16Custom", "VGG16Custom_CBAM1_Parallel"]

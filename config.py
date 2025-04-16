@@ -25,12 +25,12 @@ test_transforms = transforms.Compose([
 
 learning_rate = 1e-3
 num_classes = 4
-batch_size = 128
+batch_size = 64
 num_epochs = 20
 
 wandb = True
 wandb_project_name = "16 April 2025"
-wandb_run_name = "AlexNet_CBAM_1_Parallel"
+wandb_run_name = "VGG16"
 wandb_tags = ["normal_dataset"]
 wandb_monitor_gym = True
 #wandb_run_id = "xvio3t2p"
