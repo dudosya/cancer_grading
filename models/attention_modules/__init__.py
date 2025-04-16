@@ -1,1 +1,1 @@
-from .CBAM_4_NoChannelBottleneck import *
+from .CBAM_5_Parallel import *
